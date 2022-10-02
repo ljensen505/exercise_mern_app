@@ -1,11 +1,12 @@
 // Get the mongoose object
+import * as dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
-// PORT = 27017;
-
-// Prepare to the database exercises_db in the MongoDB server running locally on port 27017
+dotenv.config();
+console.log(process.env.AtlasURI)
+// Prepare to the database exercises_db MongoDB Atlas. Uri stored in .env file
 mongoose.connect(
-        `mongodb://localhost:27017/exercises_db`,
+        process.env.AtlasURI,
     { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
