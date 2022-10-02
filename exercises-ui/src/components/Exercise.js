@@ -1,17 +1,18 @@
 import React from "react";
-import { FaSkull, FaEdit } from 'react-icons/fa'
+import { FaSkull, FaEdit } from 'react-icons/fa';
+import { TableRow, TableCell, Link, Button } from '@mui/material';
 
 function Exercise({ exercise, onDelete, onEdit }) {
     return (
-        <tr>
-            <td>{ exercise.name }</td>
-            <td>{ exercise.reps }</td>
-            <td>{ exercise.weight }</td>
-            <td>{ exercise.unit }</td>
-            <td>{ exercise.date }</td>
-            <td><FaEdit className={"icon"} onClick={ () => onEdit(exercise)}/></td>
-            <td><FaSkull className={"icon"} onClick={ () => onDelete(exercise._id) }/></td>
-        </tr>
+        <TableRow>
+            <TableCell>{ exercise.name }</TableCell>
+            <TableCell>{ exercise.reps }</TableCell>
+            <TableCell>{ exercise.weight }</TableCell>
+            <TableCell>{ exercise.unit }</TableCell>
+            <TableCell>{ exercise.date }</TableCell>
+            <TableCell><Button><FaEdit onClick={ () => onEdit(exercise)}/></Button></TableCell>
+            <TableCell><Button><FaSkull onClick={ () => onDelete(exercise._id) }/></Button></TableCell>
+        </TableRow>
     );
 }
 

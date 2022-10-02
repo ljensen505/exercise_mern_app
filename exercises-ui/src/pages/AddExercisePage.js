@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { GiWeightLiftingUp } from 'react-icons/gi'
+import { GiWeightLiftingUp } from 'react-icons/gi';
+import { Button, FormControl, MenuItem, Select, TextField, Typography } from '@mui/material';
 
 export const AddExercisePage = () => {
     const [name, setName] = useState('');
@@ -29,24 +30,24 @@ export const AddExercisePage = () => {
     };
 
     return (
-        <div>
-            <h1><GiWeightLiftingUp/> Add Exercise <GiWeightLiftingUp/></h1>
-            <input type="text" placeholder={"Exercise"} value={name}
+        <FormControl variant="filled">
+            <Typography variant="h4"><GiWeightLiftingUp/> Add Exercise <GiWeightLiftingUp/></Typography>
+            <TextField sx={{ m: 0.5 }} required placeholder={"Exercise"} value={name}
                 onChange={e => setName(e.target.value)}/>
-            <input type="number" placeholder={"Reps"} value={reps}
+            <TextField sx={{ m: 0.5 }} required type="number" placeholder={"Reps"} value={reps}
                    onChange={e => setReps(e.target.value)}/>
-            <input type="number" placeholder={"Weight"} value={weight}
+            <TextField sx={{ m: 0.5 }} required type="number" placeholder={"Weight"} value={weight}
                    onChange={e => setWeight(e.target.value)}/>
-            <select name="unit" onChange={e => setUnit(e.target.value)}>
-                // This is how I got the unit selector to work. It wouldn't post properly with a default value
-                <option value="" selected={"selected"} disabled hidden>Unit</option>
-                <option value="lbs" >lbs</option>
-                <option value="kgs">kgs</option>
-            </select>
-            <input type="text" placeholder={"MM-DD-YY"} value={date}
+            
+            <Select sx={{ m: 0.5 }} label="unit" required onChange={e => setUnit(e.target.value)}>
+                <MenuItem value="lbs">lbs</MenuItem>
+                <MenuItem value="kgs">kgs</MenuItem>
+            </Select>
+
+            <TextField sx={{ m: 0.5 }} type="text" placeholder={"MM-DD-YY"} value={date}
                    onChange={e => setDate(e.target.value)}/>
-            <button onClick={addExercise}>Add</button>
-        </div>
+            <Button variant="contained" onClick={ addExercise }>Add</Button>
+        </FormControl>
     )
 }
 

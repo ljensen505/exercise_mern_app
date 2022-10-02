@@ -1,13 +1,14 @@
-import { Link } from 'react-router-dom'
-import { GiRunningShoe } from 'react-icons/gi'
+// import { Link } from 'react-router-dom';
+import { GiRunningShoe } from 'react-icons/gi';
+import { Container, Link } from '@mui/material';
 
 function Navigation() {
     return (
-        <nav>
-            <Link to={"/"}>Home</Link>
+        <Container>
+            <Link href={"/"}>Home</Link>
             <GiRunningShoe className={"shoe"}/>
-            <Link to={"/add-exercise"}>New</Link>
-        </nav>
+            <Link href={"/add-exercise"}>New</Link>
+        </Container>
     )
 }
 

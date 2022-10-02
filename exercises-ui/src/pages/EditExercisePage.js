@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { GiWeightLiftingUp } from "react-icons/gi";
+import { Button, FormControl, MenuItem, Select, TextField, Typography } from '@mui/material';
+
 
 const EditExercisePage = ({exerciseToEdit}) => {
     const [name, setName] = useState(exerciseToEdit.name);
@@ -29,31 +31,45 @@ const EditExercisePage = ({exerciseToEdit}) => {
     };
 
     return (
-        <div>
-            <h1><GiWeightLiftingUp/> Edit Exercise <GiWeightLiftingUp/></h1>
-            <input
+        <FormControl variant="filled">
+            <Typography variant="h4"><GiWeightLiftingUp/> Edit Exercise <GiWeightLiftingUp/></Typography>
+            <TextField
+            sx={{ m: 0.5 }}
                 type="text"
                 value={name}
                 onChange={e => setName(e.target.value)}/>
-            <input
-                type="number"
+            <TextField
+            sx={{ m: 0.5 }}
+                inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                 value={reps}
                 onChange={e => setReps(e.target.value)}/>
-            <input
-                type="number"
+                
+            <TextField
+            sx={{ m: 0.5 }}
+                
+                inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                 value={weight}
                 onChange={e => setWeight(e.target.value)}/>
-            <select name="unit" id="units" onChange={e => setUnit(e.target.value)}>
-                <option value={unit} selected disabled hidden>{unit}</option>
-                <option value="lbs">lbs</option>
-                <option value="kgs">kgs</option>
-            </select>
-            <input
+            <Select
+            sx={{ m: 0.5 }}
+            
+                name="unit" 
+                id="units" 
+                onChange={e => setUnit(e.target.value)}
+                label="unit"
+                value={unit}
+                >
+                <MenuItem value="lbs">lbs</MenuItem>
+                <MenuItem value="kgs">kgs</MenuItem>
+            </Select>
+            <TextField
+            sx={{ m: 0.5 }}
                 type="text"
                 value={date}
                 onChange={e => setDate(e.target.value)}/>
-            <button onClick={editExercise}>Save</button>
-        </div>
+            <Button variant="contained" onClick={editExercise}>Save</Button>
+
+        </FormControl>
     )
 }
 
