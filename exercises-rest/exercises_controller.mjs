@@ -1,10 +1,16 @@
 import * as exercise from './exercises_model.mjs'
 import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 const PORT = 3000;
 
-app.use(express.json())
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename)
+
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "build")));
 
 
 /**
@@ -61,6 +67,15 @@ app.delete('/exercises/:id', (req, res) => {
             console.error(error);
             res.status(500).json(error);
         });
+});
+
+/**
+ * Serve the React app as a file
+ */
+app.get("*", (req, res) => {
+    console.log("Sending React App...")
+    var filename = __dirname + "/build" + "/index.html"
+    res.sendFile(filename);
 });
 
 

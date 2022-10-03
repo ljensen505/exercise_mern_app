@@ -23,7 +23,7 @@ const EditExercisePage = ({exerciseToEdit}) => {
             },
         });
         if(response.status === 200){
-            alert("Successfully edited the exercise!");
+            console.log("Successfully edited the exercise!");
         } else {
             alert(`Failed to edit exercise, status code = ${response.status}`);
         }

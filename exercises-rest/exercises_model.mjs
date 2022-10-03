@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
 dotenv.config();
-console.log(process.env.AtlasURI)
+
 // Prepare to the database exercises_db MongoDB Atlas. Uri stored in .env file
 mongoose.connect(
         process.env.AtlasURI,

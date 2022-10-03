@@ -1,6 +1,6 @@
 import React from "react";
 import { FaSkull, FaEdit } from 'react-icons/fa';
-import { TableRow, TableCell, Link, Button } from '@mui/material';
+import { TableRow, TableCell, Button } from '@mui/material';
 
 function Exercise({ exercise, onDelete, onEdit }) {
     return (
